@@ -2,7 +2,7 @@
   <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1>Responsive Material Sidenavigation</h1>
+  <h1>Bestellsystem</h1>
 </mat-toolbar>
 <mat-sidenav-container autosize="true">
   <mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? 'false' : 'true'">
@@ -10,13 +10,28 @@
       <a mat-list-item>
         <span class="entry">
           <mat-icon>house</mat-icon>
-          <span *ngIf="!isCollapsed">Dashboard</span>
+          <span *ngIf="!isCollapsed">Startseite</span>
+        </span>
+      </a>
+
+      <a mat-list-item>
+        <span class="entry">
+          <mat-icon>person</mat-icon>
+          <span *ngIf="!isCollapsed">Kunden</span>
+        </span>
+      </a>
+
+      <a mat-list-item>
+        <span class="entry">
+          <mat-icon>shopping_cart</mat-icon>
+          <span *ngIf="!isCollapsed">Produkte</span>
         </span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <h2>Content</h2>
+    <app-dummy></app-dummy>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
