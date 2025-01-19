@@ -22,11 +22,8 @@ export class AppComponent {
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
-      if(screenSize.matches){
-        this.isMobile = true;
-      } else {
-        this.isMobile = false;
-      }
+      console.log('Width: ', screenSize)
+      this.isMobile = screenSize.matches;
     });
   }
 
