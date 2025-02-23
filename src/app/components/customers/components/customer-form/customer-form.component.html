@@ -1,0 +1,28 @@
+<form class="p-4 needs-validation" [formGroup]="form" (ngSubmit)="save()">
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Vorname</mat-label>
+    <input matInput formControlName="firstname" placeholder="Vorname" value="">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Familienname</mat-label>
+    <input matInput formControlName="lastname" placeholder="Familienname" value="">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Telefon</mat-label>
+    <span matTextPrefix>+39 &nbsp;</span>
+    <input type="tel" matInput placeholder="555-555-1234">
+  </mat-form-field>
+
+
+  <div class="row d-flex justify-content-end">
+    <div class="btn-group col-2" role="group">
+      <button type="button" class="btn btn-secondary" (click)="reset()">
+        Abbrechen
+      </button>
+      <button type="submit" class="btn btn-primary">Speichern</button>
+    </div>
+  </div>
+</form>

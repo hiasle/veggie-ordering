@@ -4,6 +4,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "paths": {"@openapi/generated": ["./src/app/openapi"], "@shared/forms":  ["./src/app/components/shared/forms"]},
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "strict": true,

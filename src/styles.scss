@@ -2,3 +2,23 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.header__toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.sidenav__content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.sidenav__main__content {
+  margin-top: 1rem;
+}

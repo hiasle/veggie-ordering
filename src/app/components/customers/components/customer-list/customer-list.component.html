@@ -1,0 +1,37 @@
+<div class="row">
+  <h6 class="col-md-2">Familienname</h6>
+  <h6 class="col-md-2">Vorname</h6>
+  <h6 class="col-md">Telefon</h6>
+  <div class="col-md"></div>
+</div>
+<div *ngFor="let customer of customers$ | async" class="row mb-1">
+  <div class="col-md-2">{{ customer.lastname }}</div>
+  <div class="col-md-2">{{ customer.firstname }}</div>
+  <div class="col-md">{{ customer.phone }}</div>
+
+  <div class="col-md me-2 d-flex justify-content-end">
+    <div
+      class="btn-toolbar"
+      role="toolbar"
+      aria-label="Toolbar with button groups"
+    >
+      <div class="btn-group me-2" role="group" aria-label="First group">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="edit(customer)"
+        >
+<!--          <fa-icon [icon]="faPencil"></fa-icon>-->
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          [disabled]="!customer.deletable"
+          (click)="delete(customer)"
+        >
+<!--          <fa-icon [icon]="faTrash"></fa-icon>-->
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

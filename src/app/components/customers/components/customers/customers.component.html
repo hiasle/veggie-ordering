@@ -1,0 +1,26 @@
+<nav class="header">
+  <h4>Kunden</h4>
+  <div class="header__toolbar">
+    <button
+      type="button"
+      routerLink="list"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="btn btn-primary"
+    >
+      Liste
+    </button>
+    <button
+      type="button"
+      routerLink="detail"
+      routerLinkActive="active"
+      class="btn btn-primary"
+    >
+      Neu
+    </button>
+  </div>
+</nav>
+
+<div class="p-2">
+  <router-outlet></router-outlet>
+</div>

@@ -1,13 +1,13 @@
 import {BreakpointObserver} from '@angular/cdk/layout';
-import {Component, ViewChild,} from '@angular/core';
+import {Component, DEFAULT_CURRENCY_CODE, ViewChild} from '@angular/core';
 import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
-import {CommonModule} from "@angular/common";
+import {CommonModule, DATE_PIPE_DEFAULT_OPTIONS} from "@angular/common";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
-import {RouterOutlet} from "@angular/router";
-import {DummyComponent} from "./dummy/dummy.component";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {ApiModule, BASE_PATH} from "@openapi/generated";
 
 @Component({
   imports: [
@@ -18,7 +18,17 @@ import {DummyComponent} from "./dummy/dummy.component";
     MatSidenavModule,
     MatListModule,
     RouterOutlet,
-    DummyComponent
+    ApiModule,
+    RouterLink,
+    RouterLinkActive
+  ],
+  providers: [
+    {provide: BASE_PATH, useValue: 'http://localhost:8080'},
+    {
+      provide: DATE_PIPE_DEFAULT_OPTIONS,
+      useValue: {dateFormat: 'dd.MM.yyyy'},
+    },
+    {provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR'},
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',

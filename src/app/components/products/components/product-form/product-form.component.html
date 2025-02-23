@@ -1,0 +1,50 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <custom-form-input
+        formControlName="name"
+        labelText="Name"
+        [showValidationErrorsInstant]="submitted"
+      ></custom-form-input>
+    </div>
+
+    <div class="col-md-3">
+      <label for="product_unit" class="form-label">Einheit</label>
+      <select id="product_unit" class="form-select" formControlName="unit">
+        <option>Wähle...</option>
+        <option *ngFor="let unit of units()" [ngValue]="unit">
+          {{ unit | uppercase }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <custom-form-input
+        formControlName="price"
+        labelText="Preis in €"
+        inputType="number"
+        [showValidationErrorsInstant]="submitted"
+      ></custom-form-input>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col">
+      <custom-form-input
+        formControlName="description"
+        labelText="Beschreibung"
+        inputType="textarea"
+        [showValidationErrorsInstant]="submitted"
+      ></custom-form-input>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-end">
+    <div class="btn-group col-2" role="group">
+      <button type="button" class="btn btn-secondary" (click)="reset()">
+        Abbrechen
+      </button>
+      <button type="submit" class="btn btn-primary">Speichern</button>
+    </div>
+  </div>
+</form>

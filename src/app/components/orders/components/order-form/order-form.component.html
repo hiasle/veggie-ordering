@@ -1,0 +1,104 @@
+<form [formGroup]="form" (ngSubmit)="saveOrder()">
+
+  <div class="form__header">
+    <mat-form-field>
+      <mat-label>Kunde</mat-label>
+      <input type="text"
+             placeholder="Kunden auswählen..."
+             aria-label="text"
+             matInput
+             formControlName="customer"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        @for (customer of customers$ | async; track customer) {
+          <mat-option [value]="customer">{{ customer.firstname }} {{ customer.lastname }}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+    <div>
+      <button
+        type="button"
+        class="btn btn-outline-primary btn-sm me-4"
+        (click)="addProduct()"
+      >
+        + Produkt hinzufügen
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary btn-sm me-2"
+        (click)="cancel()"
+      >
+        Abbrechen
+      </button>
+      <button type="submit" class="btn btn-primary btn-sm">Speichern</button>
+    </div>
+  </div>
+
+
+
+  <ng-container formArrayName="products">
+    <ng-container *ngFor="let product of products.controls; let i = index">
+      <div [formGroup]="product" class="row ps-4 mb-2">
+        <div class="col align-top">
+<!--          <ng-select-->
+<!--            [items]="products$ | async"-->
+<!--            [class.ng-submitted]="submitted"-->
+<!--            bindLabel="label"-->
+<!--            dropdownPosition="auto"-->
+<!--            placeholder="Produkt auswählen..."-->
+<!--            formControlName="product"-->
+<!--          >-->
+<!--            <ng-template ng-option-tmp let-item="item">-->
+<!--              <div class="d-flex">-->
+<!--                <div class="fw-bold">{{ item.name }}</div>-->
+<!--                <div class="ms-2 me-2">|</div>-->
+<!--                <div class="fst-italic text-capitalize">{{ item.unit }}</div>-->
+<!--                <div class="ms-2 me-2">|</div>-->
+<!--                <div class="fst-italic">{{ item.price }}€</div>-->
+<!--              </div>-->
+<!--            </ng-template>-->
+<!--          </ng-select>-->
+        </div>
+
+        <custom-form-input
+          inputType="number"
+          formControlName="productAmount"
+          labelText="Menge"
+          class="col-md-2 align-top"
+          [withLabel]="false"
+          [showValidationErrorsInstant]="submitted"
+        ></custom-form-input>
+
+        <div class="col-md-2 align-top d-flex justify-content-between">
+          <div
+            class="badge rounded-pill bg-secondary-subtle d-flex align-items-center"
+          >
+            <div class="text-dark fs-6 font-monospace">
+              {{ priceProduct(i) | currency }}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            (click)="deleteProduct(i)"
+          >
+            Löschen
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <div class="row ps-4 mb-2">
+    <div class="col"></div>
+    <div class="col-md-2">
+      <div
+        *ngIf="sum$ | async as summe"
+        class="badge rounded-pill bg-success text-dark fs-6 font-monospace"
+      >
+        {{ summe | currency }}
+      </div>
+    </div>
+  </div>
+</form>

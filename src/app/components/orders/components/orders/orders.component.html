@@ -1,0 +1,28 @@
+<nav class="header">
+  <h4>Verkäufe</h4>
+  <div class="header__toolbar">
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+      <a mat-tab-link
+         routerLink="list"
+         routerLinkActive
+         #rla="routerLinkActive"
+         [active]="rla.isActive"
+         [routerLinkActiveOptions]="{ exact: true }">
+        Liste
+      </a>
+      <a mat-tab-link
+         routerLink="detail"
+         routerLinkActive
+         #rlb="routerLinkActive"
+         [active]="rlb.isActive"
+      >
+        Neu
+      </a>
+    </nav>
+    <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+  </div>
+</nav>
+
+<div class="sidenav__main__content">
+  <router-outlet></router-outlet>
+</div>
