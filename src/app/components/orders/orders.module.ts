@@ -14,6 +14,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
+import {TabContentHeaderComponent} from "../shared/tab-content-header/tab-content-header.component";
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+    TabContentHeaderComponent
   ],
   declarations: [
     OrdersComponent,
