@@ -17,6 +17,6 @@ export class OrdersComponent {
     main: false,
     link: 'detail',
     linkName: 'Neu'
-  }]
+  }];
 
 }
